@@ -1,25 +1,477 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
+ <author>Brandon Messenger</author>
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>884</width>
-    <height>780</height>
+    <width>985</width>
+    <height>665</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Loan Workflow Admin</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>981</width>
+      <height>641</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(240, 240, 240);</string>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::North</enum>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="movable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="tabData">
+     <attribute name="title">
+      <string>Data</string>
+     </attribute>
+     <widget class="QGroupBox" name="gboxDataFiles">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>581</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="title">
+       <string>File Selections</string>
+      </property>
+      <widget class="QLineEdit" name="lneMstFile">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>40</y>
+         <width>291</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lneDlyWrkflwFile">
+       <property name="geometry">
+        <rect>
+         <x>140</x>
+         <y>110</y>
+         <width>291</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnMstFileSlct">
+       <property name="geometry">
+        <rect>
+         <x>432</x>
+         <y>40</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnDlyWrkflwSlct">
+       <property name="geometry">
+        <rect>
+         <x>432</x>
+         <y>110</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblMstFile">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>40</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Encompass data file:</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblDlyWrkflwFile">
+       <property name="geometry">
+        <rect>
+         <x>11</x>
+         <y>110</y>
+         <width>111</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Daily Workflow file:</string>
+       </property>
+      </widget>
+      <zorder>btnMstFileSlct</zorder>
+      <zorder>lblMstFile</zorder>
+      <zorder>lblDlyWrkflwFile</zorder>
+      <zorder>btnDlyWrkflwSlct</zorder>
+      <zorder>lneDlyWrkflwFile</zorder>
+      <zorder>lneMstFile</zorder>
+     </widget>
+     <widget class="QGroupBox" name="gboxDataStatOut">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>881</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Status</string>
+      </property>
+      <widget class="QTextEdit" name="teDataStatOut">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>861</width>
+         <height>201</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="lineData">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>290</y>
+        <width>881</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnDataUpdte">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>220</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(16, 88, 82);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Update</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblDataMgmt">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>5</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Data Management</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="teDataMgmt">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>261</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="plainText">
+       <string>Update Daily Workflow File with latest Encompass download.
+
+Use 'File Selection' to choose appropriate files.
+
+Click 'Update' to initiate data update.
+
+'Status' below will communicate when file has been updated.</string>
+      </property>
+     </widget>
+     <zorder>gboxDataStatOut</zorder>
+     <zorder>gboxDataFiles</zorder>
+     <zorder>lineData</zorder>
+     <zorder>btnDataUpdte</zorder>
+     <zorder>lblDataMgmt</zorder>
+     <zorder>teDataMgmt</zorder>
+    </widget>
+    <widget class="QWidget" name="tabEmail">
+     <attribute name="title">
+      <string>Email</string>
+     </attribute>
+     <widget class="QLabel" name="lblEmailMgmt">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>5</y>
+        <width>191</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+        <underline>true</underline>
+       </font>
+      </property>
+      <property name="text">
+       <string>Email Management</string>
+      </property>
+     </widget>
+     <widget class="QPlainTextEdit" name="teDataMgmt_2">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>261</width>
+        <height>131</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="plainText">
+       <string>Administer Email communication of reports to recipients.
+
+</string>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="gboxEmailInpt">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>581</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Email(s) Input</string>
+      </property>
+      <widget class="QPlainTextEdit" name="pteEmailInpt">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>30</y>
+         <width>431</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblEmailInpt">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>47</width>
+         <height>13</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Emails:</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="gboxEmailStatOut">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>881</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Status</string>
+      </property>
+      <widget class="QTextEdit" name="teEmailStatOut">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>861</width>
+         <height>201</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="Line" name="lineEmail">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>290</y>
+        <width>881</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="gboxEmailRpts">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>130</y>
+        <width>581</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="title">
+       <string>Report(s) Selection</string>
+      </property>
+      <widget class="QLabel" name="lblEmailRpts">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>61</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Report(s):</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="pteEmailRpts">
+       <property name="geometry">
+        <rect>
+         <x>80</x>
+         <y>30</y>
+         <width>431</width>
+         <height>71</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnEmailRptsSlct">
+       <property name="geometry">
+        <rect>
+         <x>512</x>
+         <y>30</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Select</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="btnEmailSend">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>252</y>
+        <width>101</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(16, 88, 82);
+color: rgb(255, 255, 255);</string>
+      </property>
+      <property name="text">
+       <string>Send</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>884</width>
+     <width>985</width>
      <height>21</height>
     </rect>
    </property>
