@@ -1,6 +1,6 @@
-from PyQt5.QtCore import QThreadPool
-from admingui import Ui_MainWindow
+from AdminGui import Ui_MainWindow
 from PyQt5 import QtWidgets
+from WorkerData import Worker, WorkerManager
 
 
 class MainWindowUI(QtWidgets.QMainWindow):
@@ -8,7 +8,7 @@ class MainWindowUI(QtWidgets.QMainWindow):
         super(MainWindowUI, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.threadpool = QThreadPool()
+        self.worker = WorkerManager()
         self.ui.btnMstFileSlct.clicked.connect(self.browseEncompFile)
         self.ui.btnDlyWrkflwSlct.clicked.connect(self.browseWrkFlwFile)
 
@@ -41,3 +41,15 @@ class MainWindowUI(QtWidgets.QMainWindow):
                                                                    options=options)
         if self.wrkflwFile:
             self.ui.lneDlyWrkflwFile.setText(self.wrkflwFile)
+
+    def startProc(self):
+        pass
+
+    def progressProc(self, val):
+        pass
+
+    def completedProc(self):
+        pass
+
+    def startWorker(self):
+        pass
