@@ -1,5 +1,6 @@
 import uuid
 from time import sleep
+import pathlib
 
 from PyQt5.QtCore import QObject, pyqtSignal, QThreadPool, QRunnable
 from ExcelFiles import XLFile
@@ -42,15 +43,17 @@ class DataWorker(QRunnable):
         self.data = XLFile()
 
     def run(self):
-        self.signals.currentStatus.emit('Starting File Update......Done')
+        self.signals.currentStatus.emit('Starting data transfer ......Done')
         self.data.fileRead(encompPath=self.efile)
-        self.signals.currentStatus.emit('Encompass data file read......Done')
+        efileName = pathlib.Path(self.efile).stem
+        self.signals.currentStatus.emit(efileName + ' file read......Done')
         self.data.excelWrite(wrkflwPath=self.wfile)
-        self.signals.currentStatus.emit('Write Encompass Data to '
-                                        'Daily Workflow workbook......Done')
+        wfileName = pathlib.Path(self.wfile).stem
+        self.signals.currentStatus.emit(efileName + ' data written to '
+                                        + wfileName + '......Done')
         sleep(3)
-        self.signals.currentStatus.emit('Save and close Daily Workflow '
-                                        'workbook......Done')
+        self.signals.currentStatus.emit(wfileName + ' saved and '
+                                                    'closed......Done')
         self.signals.completed.emit()
 
 

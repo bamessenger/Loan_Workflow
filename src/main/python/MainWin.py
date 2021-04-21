@@ -1,3 +1,4 @@
+import os
 
 from AdminGui import Ui_MainWindow
 from PyQt5 import QtWidgets
@@ -75,3 +76,6 @@ class MainWindowUI(QtWidgets.QMainWindow):
         w.signals.currentStatus.connect(self.progressDialogue)
         w.signals.completed.connect(self.completedProc)
         self.worker.enqueue(w)
+
+    def startEmailWorker(self):
+        pass
