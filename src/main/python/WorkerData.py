@@ -1,5 +1,4 @@
 import uuid
-from time import sleep
 import pathlib
 
 from PyQt5.QtCore import QObject, pyqtSignal, QThreadPool, QRunnable
@@ -43,7 +42,7 @@ class DataWorker(QRunnable):
         self.data = XLFile()
 
     def run(self):
-        self.signals.currentStatus.emit('Starting data transfer ......Done')
+        self.signals.currentStatus.emit('Starting data transfer......Done')
         self.data.fileRead(encompPath=self.efile)
         efileName = pathlib.Path(self.efile).stem
         self.signals.currentStatus.emit(efileName + ' file read......Done')
@@ -51,11 +50,10 @@ class DataWorker(QRunnable):
         wfileName = pathlib.Path(self.wfile).stem
         self.signals.currentStatus.emit(efileName + ' data written to '
                                         + wfileName + '......Done')
-        sleep(3)
         self.signals.currentStatus.emit(wfileName + ' saved and '
                                                     'closed......Done')
+        self.data.dashData(wrkflwPath=self.wfile)
         self.signals.completed.emit()
-
 
 class EmailWorker(QRunnable):
     # Worker for the Emailing of recipients of the Dashboard
