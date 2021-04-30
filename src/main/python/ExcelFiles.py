@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import pathlib as p
@@ -22,6 +21,18 @@ class XLFile:
             self.encmpDataAll['LoanStatus'] = np.where(
                 self.encmpDataAll.ClosedDate.isnull(), 'Open', 'Closed')
             self.encmpDataAllAct = self.encmpDataAll.assign(DateType='Actual')
+            self.encmpDataAllAct[['ApplicationDate', 'Disclosures',
+                                  'Processing', 'submittal', 'Approval',
+                                  'ConditionSubmission', 'ClearToClose',
+                                  'OS-FinancingContingency',
+                                  'LockExpirationDate', 'EstClosingDate',
+                                  'ClosedDate']] = \
+                self.encmpDataAllAct[['ApplicationDate', 'Disclosures',
+                                  'Processing', 'submittal', 'Approval',
+                                  'ConditionSubmission', 'ClearToClose',
+                                  'OS-FinancingContingency',
+                                  'LockExpirationDate', 'EstClosingDate',
+                                  'ClosedDate']].apply(pd.to_datetime)
             self.encmpDataOpen = self.encmpDataAll[
                 self.encmpDataAll.ClosedDate.isnull()]
             self.encmpDataOpen = self.encmpDataOpen.reset_index()
@@ -54,11 +65,12 @@ class XLFile:
         # Create tblEncompassOpen
         self.encmpDataOpen.sort_values(by=['ApplicationDate'], inplace=True,
                                        ignore_index=True)
+        self.encmpDataOpen['index'] = self.encmpDataOpen.index
         self.encmpDataOpen.to_excel(writer, sheet_name='tblEncompassOpen',
-                                    startcol=0, index=True)
+                                    startcol=0, index=False)
         sheet = wrkbk.get_sheet_by_name('tblEncompassOpen')
         table = Table(displayName='tblEncompassOpen',
-                      ref='B1:' + get_column_letter(sheet.max_column) + str(
+                      ref='A1:' + get_column_letter(sheet.max_column) + str(
                           sheet.max_row))
         style = TableStyleInfo(name='TableStyleMedium11', showRowStripes=False,
                                showColumnStripes=False)
@@ -86,8 +98,20 @@ class XLFile:
         writer.book = wrkbk
         self.encmpDataAllExp = pd.read_excel(wrkflwPath, engine='openpyxl',
                                              sheet_name='tblEncompassAllExp')
-        self.encmpDataAllExp.dropna(how='all')
-        self.encmpDataAllAct.dropna(how='all')
+        indexNamesExp = self.encmpDataAllExp[(self.encmpDataAllExp[
+                                               'LoanNumber'] == 0) |
+                                          (self.encmpDataAllExp['LoanNumber']
+                                           == " ")].index
+        self.encmpDataAllExp.drop(indexNamesExp, inplace=True)
+        self.encmpDataAllExp[
+             ['ApplicationDate', 'Disclosures', 'Processing', 'submittal',
+              'Approval', 'ConditionSubmission', 'ClearToClose',
+              'OS-FinancingContingency', 'LockExpirationDate', 'EstClosingDate',
+              'ClosedDate']] = self.encmpDataAllExp[
+             ['ApplicationDate', 'Disclosures', 'Processing', 'submittal',
+              'Approval', 'ConditionSubmission', 'ClearToClose',
+              'OS-FinancingContingency', 'LockExpirationDate', 'EstClosingDate',
+              'ClosedDate']].apply(pd.to_datetime, errors='coerce')
         self.encmpDataAllExp['LoanStatus'] = np.where(
             self.encmpDataAllExp.ClosedDate.isnull(), 'Open', 'Closed')
         # Create tblEncompassAllDash
@@ -97,9 +121,21 @@ class XLFile:
             id_vars=['Company-UsersOrganizationCode', 'LoanOfficer',
                      'LoanProcessor', 'BorrowerLastName', 'LoanNumber',
                      'LoanPurpose', 'LockRequestLoanAmount',
-                     'LoanTeamMemberName-UW1-Initial', 'DateType',
-                     'LoanStatus'], var_name='MilestoneType',
-            value_name='MilestoneDates')
+                     'LoanTeamMemberName-UW1-Initial', 'LoanStatus', 'DateType'
+                     ], var_name='MilestoneType',
+                        value_name='MilestoneDates')
+        self.encmpDataAllDash['MilestoneOrder'] = [1 if x == 'Disclosures'
+            else 2 if x == 'Processing' else 3 if x == 'submittal'
+            else 4 if x == 'Approval' else 5 if x == 'ConditionSubmission'
+            else 6 if x == 'ClearToClose'
+            else 99 for x in self.encmpDataAllDash['MilestoneType']]
+        self.encmpDataAllDash['MilestoneDates'].replace('', np.nan,
+                                                        inplace=True)
+        self.encmpDataAllDash.dropna(subset=['LoanNumber'], inplace=True)
+        self.encmpDataAllDash['Lookup'] = self.encmpDataAllDash[
+                                              'LoanNumber'].astype('int64').astype(str)+ \
+                                          self.encmpDataAllDash['DateType'] + \
+                                          self.encmpDataAllDash['MilestoneType']
         self.encmpDataAllDash.to_excel(writer, sheet_name='tblEncompassAllDash',
                                        startcol=1, index=False)
         sheet = wrkbk.get_sheet_by_name('tblEncompassAllDash')
