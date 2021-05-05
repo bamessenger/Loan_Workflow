@@ -32,13 +32,14 @@ class WorkerManager(QObject):
 
 class DataWorker(QRunnable):
     # Worker for the data transfer of Encompass data
-    def __init__(self, ePath, wPath):
+    def __init__(self, ePath, wdPath, wrPath):
         super().__init__()
         # create unique identifier for each worker
         self.jobID = str(uuid.uuid4().hex)
         self.signals = WorkerSignals()
         self.efile = ePath
-        self.wfile = wPath
+        self.wdfile = wdPath
+        self.wrfile = wrPath
         self.data = XLFile()
 
     def run(self):
@@ -46,13 +47,13 @@ class DataWorker(QRunnable):
         self.data.fileRead(encompPath=self.efile)
         efileName = pathlib.Path(self.efile).stem
         self.signals.currentStatus.emit(efileName + ' file read......Done')
-        self.data.excelWrite(wrkflwPath=self.wfile)
-        wfileName = pathlib.Path(self.wfile).stem
+        self.data.excelWrite(wrkflwDataPath=self.wdfile)
+        wdfileName = pathlib.Path(self.wdfile).stem
         self.signals.currentStatus.emit(efileName + ' data written to '
-                                        + wfileName + '......Done')
-        self.signals.currentStatus.emit(wfileName + ' saved and '
+                                        + wdfileName + '......Done')
+        self.signals.currentStatus.emit(wdfileName + ' saved and '
                                                     'closed......Done')
-        self.data.dashData(wrkflwPath=self.wfile)
+        self.data.dashData(wrkflwDataPath=self.wdfile, wrkflwRptPath=self.wrfile)
         self.signals.completed.emit()
 
 class EmailWorker(QRunnable):

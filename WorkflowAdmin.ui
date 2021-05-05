@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>985</width>
-    <height>665</height>
+    <width>1060</width>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,8 +20,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>981</width>
-      <height>641</height>
+      <width>1061</width>
+      <height>721</height>
      </rect>
     </property>
     <property name="autoFillBackground">
@@ -46,10 +46,10 @@
      <widget class="QGroupBox" name="gboxDataFiles">
       <property name="geometry">
        <rect>
-        <x>310</x>
+        <x>350</x>
         <y>10</y>
-        <width>581</width>
-        <height>171</height>
+        <width>681</width>
+        <height>191</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -61,9 +61,9 @@
       <widget class="QLineEdit" name="lneMstFile">
        <property name="geometry">
         <rect>
-         <x>140</x>
+         <x>199</x>
          <y>40</y>
-         <width>291</width>
+         <width>371</width>
          <height>20</height>
         </rect>
        </property>
@@ -71,23 +71,26 @@
         <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="lneDlyWrkflwFile">
+      <widget class="QLineEdit" name="lneDlyWrkflwDataFile">
        <property name="geometry">
         <rect>
-         <x>140</x>
-         <y>110</y>
-         <width>291</width>
+         <x>199</x>
+         <y>90</y>
+         <width>371</width>
          <height>20</height>
         </rect>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="placeholderText">
+        <string>DailyWorkflowData.xlsx</string>
        </property>
       </widget>
       <widget class="QPushButton" name="btnMstFileSlct">
        <property name="geometry">
         <rect>
-         <x>432</x>
+         <x>571</x>
          <y>40</y>
          <width>61</width>
          <height>20</height>
@@ -97,11 +100,11 @@
         <string>Select</string>
        </property>
       </widget>
-      <widget class="QPushButton" name="btnDlyWrkflwSlct">
+      <widget class="QPushButton" name="btnDlyWrkflwDataSlct">
        <property name="geometry">
         <rect>
-         <x>432</x>
-         <y>110</y>
+         <x>571</x>
+         <y>90</y>
          <width>61</width>
          <height>20</height>
         </rect>
@@ -115,7 +118,7 @@
         <rect>
          <x>11</x>
          <y>40</y>
-         <width>111</width>
+         <width>181</width>
          <height>20</height>
         </rect>
        </property>
@@ -123,32 +126,77 @@
         <string>Encompass data file:</string>
        </property>
       </widget>
-      <widget class="QLabel" name="lblDlyWrkflwFile">
+      <widget class="QLabel" name="lblDlyWrkflwDataFile">
        <property name="geometry">
         <rect>
-         <x>11</x>
-         <y>110</y>
-         <width>111</width>
+         <x>10</x>
+         <y>90</y>
+         <width>181</width>
          <height>20</height>
         </rect>
        </property>
        <property name="text">
-        <string>Daily Workflow file:</string>
+        <string>Daily Workflow data file:</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lneDlyWrkflwRptFile">
+       <property name="geometry">
+        <rect>
+         <x>199</x>
+         <y>140</y>
+         <width>371</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="placeholderText">
+        <string>DailyWorkflowRpting.xlsx</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="lblDlyWrkflwRptFile">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>140</y>
+         <width>181</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Daily Workflow Reporting file:</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnDlyWrkflwRptSlct">
+       <property name="geometry">
+        <rect>
+         <x>571</x>
+         <y>140</y>
+         <width>61</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Select</string>
        </property>
       </widget>
       <zorder>btnMstFileSlct</zorder>
       <zorder>lblMstFile</zorder>
-      <zorder>lblDlyWrkflwFile</zorder>
-      <zorder>btnDlyWrkflwSlct</zorder>
-      <zorder>lneDlyWrkflwFile</zorder>
+      <zorder>lblDlyWrkflwDataFile</zorder>
+      <zorder>btnDlyWrkflwDataSlct</zorder>
+      <zorder>lneDlyWrkflwDataFile</zorder>
       <zorder>lneMstFile</zorder>
+      <zorder>lneDlyWrkflwRptFile</zorder>
+      <zorder>lblDlyWrkflwRptFile</zorder>
+      <zorder>btnDlyWrkflwRptSlct</zorder>
      </widget>
      <widget class="QGroupBox" name="gboxDataStatOut">
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>320</y>
-        <width>881</width>
+        <y>370</y>
+        <width>1031</width>
         <height>251</height>
        </rect>
       </property>
@@ -160,7 +208,7 @@
         <rect>
          <x>10</x>
          <y>30</y>
-         <width>861</width>
+         <width>1011</width>
          <height>201</height>
         </rect>
        </property>
@@ -170,8 +218,8 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>290</y>
-        <width>881</width>
+        <y>330</y>
+        <width>1031</width>
         <height>16</height>
        </rect>
       </property>
@@ -182,8 +230,8 @@
      <widget class="QPushButton" name="btnDataUpdte">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>220</y>
+        <x>476</x>
+        <y>270</y>
         <width>101</width>
         <height>31</height>
        </rect>
@@ -231,8 +279,8 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>261</width>
-        <height>131</height>
+        <width>321</width>
+        <height>151</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -245,9 +293,9 @@ color: rgb(255, 255, 255);</string>
        <enum>Qt::ScrollBarAlwaysOff</enum>
       </property>
       <property name="plainText">
-       <string>Update Daily Workflow File with latest Encompass download.
+       <string>Update Daily Workflow File(s) with latest Encompass download.
 
-Use 'File Selection' to choose appropriate files.
+Use 'File Selections' to choose appropriate files.
 
 Click 'Update' to initiate data update.
 
@@ -471,7 +519,7 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>985</width>
+     <width>1060</width>
      <height>21</height>
     </rect>
    </property>

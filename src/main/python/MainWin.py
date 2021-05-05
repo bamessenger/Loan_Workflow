@@ -1,8 +1,6 @@
-import os
-
-from AdminGui import Ui_MainWindow
+from src.main.python.AdminGui import Ui_MainWindow
 from PyQt5 import QtWidgets
-from WorkerData import DataWorker, EmailWorker, WorkerManager
+from WorkerData import DataWorker, WorkerManager
 from PyQt5.QtWidgets import QMessageBox
 
 
@@ -15,7 +13,8 @@ class MainWindowUI(QtWidgets.QMainWindow):
         self.worker = WorkerManager()
         # Connect buttons with Methods
         self.ui.btnMstFileSlct.clicked.connect(self.browseEncompFile)
-        self.ui.btnDlyWrkflwSlct.clicked.connect(self.browseWrkFlwFile)
+        self.ui.btnDlyWrkflwDataSlct.clicked.connect(self.browseWrkFlwDataFile)
+        self.ui.btnDlyWrkflwRptSlct.clicked.connect(self.browseWrkFlwRptingFile)
         self.ui.btnDataUpdte.clicked.connect(self.startProc)
 
     def browseEncompFile(self):
@@ -33,11 +32,12 @@ class MainWindowUI(QtWidgets.QMainWindow):
         if self.encompFile:
             self.ui.lneMstFile.setText(self.encompFile)
 
-    def browseWrkFlwFile(self):
-        # Browse and select Daily Workflow file within file explorer
+    def browseWrkFlwDataFile(self):
+        # Browse and select Daily Workflow Data file within file explorer
         options = QtWidgets.QFileDialog.Options()
         options |= QtWidgets.QFileDialog.DontUseNativeDialog
-        self.wrkflwFile, _ = QtWidgets.QFileDialog.getOpenFileName(None, "Open",
+        self.wrkflwDataFile, _ = QtWidgets.QFileDialog.getOpenFileName(None,
+                                                                    "Open",
                                                                    "", "Excel "
                                                                        "Files ("
                                                                        "*.xl"
@@ -45,8 +45,24 @@ class MainWindowUI(QtWidgets.QMainWindow):
                                                                        "Files "
                                                                        "(*)",
                                                                    options=options)
-        if self.wrkflwFile:
-            self.ui.lneDlyWrkflwFile.setText(self.wrkflwFile)
+        if self.wrkflwDataFile:
+            self.ui.lneDlyWrkflwDataFile.setText(self.wrkflwDataFile)
+
+    def browseWrkFlwRptingFile(self):
+        # Browse and select Daily Workflow Data file within file explorer
+        options = QtWidgets.QFileDialog.Options()
+        options |= QtWidgets.QFileDialog.DontUseNativeDialog
+        self.wrkflwRptFile, _ = QtWidgets.QFileDialog.getOpenFileName(None,
+                                                                    "Open",
+                                                                   "", "Excel "
+                                                                       "Files ("
+                                                                       "*.xl"
+                                                                       "*);;All "
+                                                                       "Files "
+                                                                       "(*)",
+                                                                   options=options)
+        if self.wrkflwRptFile:
+            self.ui.lneDlyWrkflwRptFile.setText(self.wrkflwRptFile)
 
     def startProc(self):
         # Clear Status Dialogue in case user reruns the application
@@ -72,7 +88,8 @@ class MainWindowUI(QtWidgets.QMainWindow):
         self.msgBox.exec()
 
     def startDataWorker(self):
-        w = DataWorker(ePath=self.encompFile, wPath=self.wrkflwFile)
+        w = DataWorker(ePath=self.encompFile, wdPath=self.wrkflwDataFile,
+                       wrPath=self.wrkflwRptFile)
         w.signals.currentStatus.connect(self.progressDialogue)
         w.signals.completed.connect(self.completedProc)
         self.worker.enqueue(w)

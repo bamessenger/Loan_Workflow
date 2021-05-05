@@ -1,6 +1,8 @@
+
 import pandas as pd
 import numpy as np
 import pathlib as p
+
 import win32com.client as win32
 
 from openpyxl import load_workbook
@@ -37,8 +39,8 @@ class XLFile:
                 self.encmpDataAll.ClosedDate.isnull()]
             self.encmpDataOpen = self.encmpDataOpen.reset_index()
 
-    def excelWrite(self, wrkflwPath):
-        wrkbk = load_workbook(wrkflwPath)
+    def excelWrite(self, wrkflwDataPath):
+        wrkbk = load_workbook(wrkflwDataPath)
         # Clean up current sheets in order to create new
         sheetAll = 'tblEncompassAllAct'
         sheetOpen = 'tblEncompassOpen'
@@ -48,7 +50,7 @@ class XLFile:
             elif sheet == sheetOpen:
                 wrkbk.remove(wrkbk[sheet])
         # Create Excel Writer used to create tables
-        writer = pd.ExcelWriter(wrkflwPath, mode='a',
+        writer = pd.ExcelWriter(wrkflwDataPath, mode='a',
                                 datetime_format='MM-DD-YYYY', engine='openpyxl')
         writer.book = wrkbk
         # Create tblEncompassAllAct
@@ -76,27 +78,30 @@ class XLFile:
                                showColumnStripes=False)
         table.tableStyleInfo = style
         sheet.add_table(table)
-        wrkbk.save(wrkflwPath)
+        wrkbk.save(wrkflwDataPath)
         wrkbk.close()
 
-    def dashData(self, wrkflwPath):
+    def dashData(self, wrkflwDataPath, wrkflwRptPath):
         # Open Workbook up and allow functions to compile
         excel = win32.gencache.EnsureDispatch('Excel.Application')
-        workbook = excel.Workbooks.Open(wrkflwPath)
+        workbook = excel.Workbooks.Open(wrkflwDataPath)
         workbook.Save()
         workbook.Close()
         excel.Quit()
-        wrkbk = load_workbook(wrkflwPath)
+        wrkbk = load_workbook(wrkflwDataPath)
         # Clean up current sheets in order to create new
         sheetDash = 'tblEncompassAllDash'
+        sheetDash2 = 'tblEncompassAllDash2'
         for sheet in wrkbk.sheetnames:
             if sheet == sheetDash:
                 wrkbk.remove(wrkbk[sheet])
+            elif sheet == sheetDash2:
+                wrkbk.remove(wrkbk[sheet])
         # Create Excel Writer used to create tables
-        writer = pd.ExcelWriter(wrkflwPath, mode='a',
+        writer = pd.ExcelWriter(wrkflwDataPath, mode='a',
                                 datetime_format='MM-DD-YYYY', engine='openpyxl')
         writer.book = wrkbk
-        self.encmpDataAllExp = pd.read_excel(wrkflwPath, engine='openpyxl',
+        self.encmpDataAllExp = pd.read_excel(wrkflwDataPath, engine='openpyxl',
                                              sheet_name='tblEncompassAllExp')
         indexNamesExp = self.encmpDataAllExp[(self.encmpDataAllExp[
                                                'LoanNumber'] == 0) |
@@ -146,5 +151,33 @@ class XLFile:
                                showColumnStripes=False)
         table.tableStyleInfo = style
         sheet.add_table(table)
-        wrkbk.save(wrkflwPath)
+        self.encmpDataAllDash['Lookup2'] = self.encmpDataAllDash[
+                                              'LoanNumber'].astype(
+            'int64').astype(str) + self.encmpDataAllDash['MilestoneType']
+        self.encmpDataAllDash2 = self.encmpDataAllDash.\
+            pivot(index=['Lookup2','LoanOfficer', 'LoanProcessor',
+                         'LoanNumber', 'BorrowerLastName', 'MilestoneType',
+                         'MilestoneOrder', 'LoanStatus', 'LoanPurpose'],
+                  columns='DateType',
+                  values='MilestoneDates').rename_axis(None, axis=1).reset_index()
+        self.encmpDataAllDash2.fillna('', inplace=True)
+        self.encmpDataAllDash2[['Expected', 'Actual']] = \
+            self.encmpDataAllDash2[['Expected', 'Actual']].apply(pd.to_datetime,
+                                                                 errors='coerce')
+        self.encmpDataAllDash2.sort_values(by=['Expected', 'MilestoneOrder'],
+                                           ascending=[True, True])
+        self.encmpDataAllDash2.to_excel(writer,
+                                        sheet_name='tblEncompassAllDash2',
+                                       startcol=1, index=False)
+        sheet = wrkbk.get_sheet_by_name('tblEncompassAllDash2')
+        table = Table(displayName='tblEncompassAllDash2',
+                      ref='B1:' + get_column_letter(sheet.max_column) + str(
+                          sheet.max_row))
+        style = TableStyleInfo(name='TableStyleMedium11', showRowStripes=False,
+                               showColumnStripes=False)
+        table.tableStyleInfo = style
+        sheet.add_table(table)
+        wrkbk.save(wrkflwDataPath)
         wrkbk.close()
+
+
