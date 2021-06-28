@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1258</width>
-    <height>804</height>
+    <width>1263</width>
+    <height>832</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -67,15 +67,15 @@
      <widget class="QGroupBox" name="gboxDataFiles">
       <property name="geometry">
        <rect>
-        <x>400</x>
+        <x>450</x>
         <y>10</y>
-        <width>801</width>
+        <width>751</width>
         <height>191</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -89,11 +89,16 @@
       <widget class="QLineEdit" name="lneMstFile">
        <property name="geometry">
         <rect>
-         <x>228</x>
+         <x>289</x>
          <y>40</y>
          <width>371</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -102,11 +107,16 @@
       <widget class="QLineEdit" name="lneDlyWrkflwDataFile">
        <property name="geometry">
         <rect>
-         <x>228</x>
+         <x>289</x>
          <y>90</y>
          <width>371</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="toolTip">
         <string/>
@@ -124,11 +134,16 @@
       <widget class="QPushButton" name="btnMstFileSlct">
        <property name="geometry">
         <rect>
-         <x>600</x>
+         <x>661</x>
          <y>40</y>
          <width>61</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Select</string>
@@ -137,11 +152,16 @@
       <widget class="QPushButton" name="btnDlyWrkflwDataSlct">
        <property name="geometry">
         <rect>
-         <x>600</x>
+         <x>661</x>
          <y>90</y>
          <width>61</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Select</string>
@@ -150,11 +170,16 @@
       <widget class="QLabel" name="lblMstFile">
        <property name="geometry">
         <rect>
-         <x>11</x>
+         <x>36</x>
          <y>40</y>
-         <width>201</width>
+         <width>251</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Encompass data file:</string>
@@ -163,11 +188,16 @@
       <widget class="QLabel" name="lblDlyWrkflwDataFile">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>35</x>
          <y>90</y>
-         <width>201</width>
+         <width>251</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="toolTip">
         <string notr="true"/>
@@ -185,11 +215,16 @@
       <widget class="QLineEdit" name="lneDlyWrkflwRptFile">
        <property name="geometry">
         <rect>
-         <x>228</x>
+         <x>289</x>
          <y>140</y>
          <width>371</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(255, 255, 255);</string>
@@ -201,11 +236,16 @@
       <widget class="QLabel" name="lblDlyWrkflwRptFile">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>35</x>
          <y>140</y>
-         <width>201</width>
+         <width>251</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Daily Workflow Reporting file:</string>
@@ -214,11 +254,16 @@
       <widget class="QPushButton" name="btnDlyWrkflwRptSlct">
        <property name="geometry">
         <rect>
-         <x>600</x>
+         <x>661</x>
          <y>140</y>
          <width>61</width>
          <height>20</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Select</string>
@@ -242,13 +287,13 @@
        <rect>
         <x>10</x>
         <y>370</y>
-        <width>361</width>
+        <width>421</width>
         <height>301</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -261,9 +306,14 @@
         <rect>
          <x>10</x>
          <y>40</y>
-         <width>91</width>
+         <width>181</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);</string>
@@ -277,9 +327,14 @@
         <rect>
          <x>10</x>
          <y>80</y>
-         <width>111</width>
+         <width>181</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">color: rgb(0, 0, 0);</string>
@@ -291,15 +346,15 @@
       <widget class="QLineEdit" name="lneCurrStatus">
        <property name="geometry">
         <rect>
-         <x>150</x>
+         <x>209</x>
          <y>40</y>
-         <width>181</width>
+         <width>191</width>
          <height>20</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>8</pointsize>
          <weight>50</weight>
          <bold>false</bold>
         </font>
@@ -320,15 +375,15 @@
       <widget class="QLineEdit" name="lneTasksCmpl">
        <property name="geometry">
         <rect>
-         <x>150</x>
+         <x>209</x>
          <y>80</y>
-         <width>181</width>
+         <width>191</width>
          <height>20</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>8</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -355,15 +410,15 @@
      <widget class="QPushButton" name="btnDataUpdte">
       <property name="geometry">
        <rect>
-        <x>536</x>
+        <x>526</x>
         <y>270</y>
-        <width>121</width>
+        <width>141</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>8</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -381,7 +436,7 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>10</x>
         <y>5</y>
-        <width>191</width>
+        <width>431</width>
         <height>31</height>
        </rect>
       </property>
@@ -408,9 +463,14 @@ color: rgb(255, 255, 255);</string>
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>371</width>
+        <width>421</width>
         <height>151</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
       </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -434,15 +494,15 @@ Click 'Start Transfer' to initiate data update.
      <widget class="QGroupBox" name="gboxOutput">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>450</x>
         <y>370</y>
-        <width>811</width>
+        <width>751</width>
         <height>301</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>10</pointsize>
         <weight>50</weight>
         <bold>false</bold>
        </font>
@@ -458,13 +518,13 @@ Click 'Start Transfer' to initiate data update.
         <rect>
          <x>20</x>
          <y>40</y>
-         <width>771</width>
+         <width>701</width>
          <height>231</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>10</pointsize>
+         <pointsize>8</pointsize>
         </font>
        </property>
        <property name="styleSheet">
@@ -495,7 +555,7 @@ Click 'Start Transfer' to initiate data update.
        <rect>
         <x>10</x>
         <y>5</y>
-        <width>191</width>
+        <width>461</width>
         <height>31</height>
        </rect>
       </property>
@@ -526,6 +586,11 @@ Click 'Start Transfer' to initiate data update.
         <height>131</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
@@ -549,6 +614,11 @@ Click 'Start Transfer' to initiate data update.
         <width>671</width>
         <height>111</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
       </property>
       <property name="title">
        <string>Email(s) Input</string>
@@ -575,6 +645,11 @@ Click 'Start Transfer' to initiate data update.
          <height>13</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Emails:</string>
        </property>
@@ -589,6 +664,11 @@ Click 'Start Transfer' to initiate data update.
         <height>251</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="title">
        <string>Status</string>
       </property>
@@ -600,6 +680,11 @@ Click 'Start Transfer' to initiate data update.
          <width>1141</width>
          <height>201</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
       </widget>
      </widget>
@@ -625,6 +710,11 @@ Click 'Start Transfer' to initiate data update.
         <height>111</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="title">
        <string>Report(s) Selection</string>
       </property>
@@ -636,6 +726,11 @@ Click 'Start Transfer' to initiate data update.
          <width>61</width>
          <height>16</height>
         </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
        </property>
        <property name="text">
         <string>Report(s):</string>
@@ -663,6 +758,11 @@ Click 'Start Transfer' to initiate data update.
          <height>20</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
        <property name="text">
         <string>Select</string>
        </property>
@@ -679,7 +779,7 @@ Click 'Start Transfer' to initiate data update.
       </property>
       <property name="font">
        <font>
-        <pointsize>10</pointsize>
+        <pointsize>8</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -700,8 +800,8 @@ color: rgb(255, 255, 255);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1258</width>
-     <height>21</height>
+     <width>1263</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

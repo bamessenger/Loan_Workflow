@@ -1,6 +1,6 @@
 {
     "app_name": "Loan Workflow Admin",
-    "author": "Brandon Messenger",
-    "main_module": "src/main/python/main.py",
-    "version": "2.0.0"
+    "author": "Cedar Insights",
+    "main_module": "src/main/python/main.pyw",
+    "version": "0.0.0"
 }
